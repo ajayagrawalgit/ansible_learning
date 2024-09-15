@@ -1,0 +1,6 @@
+---
+- name: Ping all hosts
+  hosts: all  # You need to specify the hosts (e.g., all, or a group from your inventory)
+  tasks:
+    - name: ping module name  # This should be properly indented with a space after "- name"
+      ansible.builtin.ping:  # The module name should not be followed by text, and the colon should be separate

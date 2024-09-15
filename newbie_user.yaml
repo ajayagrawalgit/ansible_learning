@@ -1,0 +1,10 @@
+---
+- name: Checks if 'vini' user exists in all the hosts
+  hosts: all
+  become: true
+  tasks:
+    - name: Check 'vini' existence
+      ansible.builtin.user:
+        name: vini
+        uid: 4000
+        state: present

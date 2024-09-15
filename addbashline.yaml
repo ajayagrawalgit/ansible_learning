@@ -1,0 +1,11 @@
+---
+- name: Add the logic to show IP Address at login
+  hosts: all
+  become: true
+  tasks:
+    - name: Adding line to bashrc
+      lineinfile:
+        path: /home/mickey/.bashrc
+        line: echo -e "\n\n- - - - - - - - - - $(hostname -I) - - - - - - - - - -\n\n"
+        backup: yes
+        insertafter: EOF
