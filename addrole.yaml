@@ -1,0 +1,7 @@
+---
+- name: Trying to add role to the servers
+  hosts: all
+  become: true
+  roles:
+    - linux-system-roles.timesync
+    - uniyall.httpd-installation-role

@@ -1,0 +1,9 @@
+---
+- name: Playbook to shutdown all the Test VMs
+  hosts: testservers
+  become: yes
+  tasks:
+    - name: Task to Shutdown all the servers listed in testservers
+      community.general.shutdown:
+        delay: 2
+        msg: Shutting down {{ inventory_hostname }} now.
