@@ -1,0 +1,16 @@
+---
+- name: Checking lpcal play variables
+  hosts: all
+  become: false
+  vars:
+    my_string: yellow
+  vars_files:
+    - varfile.yaml
+  tasks:
+    - name: Ensure that the fact controller learn about my var modules
+      ansible.builtin.set_fact:
+        playvar: this is a fact var
+        
+    - name: Print the variable content of 'play_var'
+      ansible.builtin.debug:
+        msg: This is the stored var - {{ playvar }}
