@@ -1,0 +1,8 @@
+---
+- name: A Playbook to test vars 
+  hosts: all
+  # include_vars: ./vars/vars.yaml
+  tasks:
+    - name: CHeck the var name
+      ansible.builtin.debug:
+        msg: "Sample Variable Set: {{ my_string }}"
