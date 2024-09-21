@@ -1,0 +1,10 @@
+---
+- name: Playbook to Power On the Test Servers
+  hosts: testservers
+  vars:
+    server1vmx: E:\VMs\server1\server1.vmx
+  become: true
+  tasks:
+    - name: Task to Power On the servers listed in testservers
+      command: >
+        ssh mickey@10.108.182.151 "vmrun -T ws start {{ server1vmx }}"
