@@ -1,0 +1,25 @@
+- name: Ubuntu Server Upgrade
+  hosts: testservers
+  become: true
+  tasks:
+    - name: Ensure apt-utils is installed
+      ansible.builtin.apt:
+        name: apt-utils
+        state: present
+
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Upgrade all packages to latest version
+      ansible.builtin.apt:
+        upgrade: dist
+        allow_unauthenticated: yes
+        force_apt_get: yes
+        update_cache: yes
+      notify: Reboot Required
+
+  handlers:
+    - name: Reboot Required
+      ansible.builtin.reboot:
+        msg: REBOOTING NOW...

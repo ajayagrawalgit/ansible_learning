@@ -1,0 +1,17 @@
+---
+- name: Kernel Updater
+  hosts: testservers
+  become: true
+  tasks:
+    - name: ENsure python3-dnf is available
+      ansible.builtin.package:
+        name: python3-dnf
+        state: present
+    - name: dnf task to update the kernel to latest
+      ansible.builtin.dnf:
+        name: kernel
+        state: latest
+        use_backend: dnf4
+    - name: Ensure that the server is rebooted
+      ansible.builtin.reboot:
+        msg: rebooting due to kernel update

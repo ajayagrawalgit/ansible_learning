@@ -1,0 +1,7 @@
+- name: Server Reboot Playbook
+  hosts: testservers
+  become: true
+  tasks:
+    - name: Builtin Reboot Package
+      ansible.builtin.reboot:
+        msg: Reboot initiated
